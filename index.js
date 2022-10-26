@@ -15,10 +15,14 @@ app.get('/', (req, res) => {
 //receive the data from contact form and send it to the email
 app.post('/contact', (req, res) => {
     //contact form data
+    
     const name = req.body.name;
     const email = req.body.email;
     const subject = req.body.subject;
     const message = req.body.message;
+
+    //log all the data
+    console.log(name, email, subject, message);
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
