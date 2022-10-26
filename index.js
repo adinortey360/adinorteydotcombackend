@@ -54,6 +54,15 @@ app.get('/contact', (req, res) => {
 })
 
 
+//get posts from medium and send it to the frontend
+app.get('/posts', (req, res) => {
+    const mediumUrl = 'https://medium.com/feed/@adinortey360';
+    const feed = require('rss-to-json');
+    feed.load(mediumUrl, function(err, rss){
+        res.send(rss);
+    });
+})
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
 })
