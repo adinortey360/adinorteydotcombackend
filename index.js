@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 //receive the data from contact form and send it to the email
-app.post('/contact', (req, res) => {
+app.get('/contact', (req, res) => {
     //contact form data
     const name = req.body.name;
     const email = req.body.email;
@@ -46,14 +46,11 @@ app.post('/contact', (req, res) => {
     
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-        console.log(error);
-            //send response
-            res.send('error');
         } else {
-            //send reponse 
-            res.send('success');
         }
     });
+
+    res.send('done');
 })
 
 
