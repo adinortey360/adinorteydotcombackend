@@ -35,7 +35,7 @@ app.post('/contact', (req, res) => {
         from: email,
         to: 'hello@adinortey.com',
         subject: 'New message from ' + name + ' via adinortey.com',
-        text: 'Name: ' + name + ' Email: ' + email + ' Subject: ' + subject + ' Message: ' + message
+        text: 'Name: ' + name + ' <br />Email: ' + email + ' <br />Subject: ' + subject + ' <br />Message: ' + message
     };
     
     transporter.sendMail(mailOptions, function(error, info){
