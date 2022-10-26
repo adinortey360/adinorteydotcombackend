@@ -7,6 +7,7 @@ const port = 3000
 app.use(express.urlencoded());
 
 const cors = require('cors');
+
 app.use(cors({
     origin: '*'
 }));
@@ -46,13 +47,11 @@ app.post('/contact', (req, res) => {
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
         console.log(error);
-            //send response
-            res.send('error');
         } else {
-            //send reponse 
-            res.send('success');
         }
     });
+
+    res.send('done');
 })
 
 
