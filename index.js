@@ -6,6 +6,11 @@ const port = 3000
 
 app.use(express.urlencoded());
 
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
+
 //Environment variables for smtp mail credentials
 const user = process.env.SMTP_USER;
 const pass = process.env.SMTP_PASS;
