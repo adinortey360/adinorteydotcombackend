@@ -3,6 +3,11 @@ var nodemailer = require('nodemailer');
 const app = express()
 const port = 3000
 
+//Environment variables for smtp mail credentials
+const user = process.env.SMTP_USER;
+const pass = process.env.SMTP_PASS;
+
+
 app.get('/', (req, res) => {
   res.send('Home')
 })
@@ -12,14 +17,14 @@ app.post('/contact', (req, res) => {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-        user: 'your email',
-        pass: 'your password'
+            user: user,
+            pass: pass
         }
     });
     
     var mailOptions = {
-        from: 'your email',
-        to: 'receiver email',
+        from: 'test@gmail.com',
+        to: 'hello@adinortey.com',
         subject: 'Sending Email using Node.js',
         text: 'That was easy!'
     };
