@@ -41,8 +41,11 @@ app.post('/contact', (req, res) => {
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
         console.log(error);
+            //send response
+            res.send('error');
         } else {
-        console.log('Email sent: ' + info.response);
+            //send reponse 
+            res.send('success');
         }
     });
 })
