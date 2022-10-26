@@ -18,7 +18,7 @@ const pass = process.env.SMTP_PASS;
 
 
 app.get('/', (req, res) => {
-  res.send('Home')
+    res.send('Home')
 })
 
 //receive the data from contact form and send it to the email
@@ -36,15 +36,15 @@ app.get('/contact', (req, res) => {
             pass: pass
         }
     });
-    
+
     var mailOptions = {
         from: email,
         to: 'hello@adinortey.com',
         subject: 'New message from ' + name + ' via adinortey.com',
         text: 'Name: ' + name + ' <br />Email: ' + email + ' <br />Subject: ' + subject + ' <br />Message: ' + message
     };
-    
-    transporter.sendMail(mailOptions, function(error, info){
+
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
         } else {
         }
@@ -57,14 +57,15 @@ app.get('/contact', (req, res) => {
 //get posts from medium and send it to the frontend
 app.get('/posts', (req, res) => {
     const mediumUrl = 'https://medium.com/feed/@adinortey360';
-    const feed = require('rss-to-json');
-    feed.load(mediumUrl, function(err, rss){
+    const { parse } = require('rss-to-json');
+
+    parse(mediumUrl).then(rss => {
         res.send(rss);
     });
 })
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
+    console.log(`Listening on port ${port}`)
 })
 
 // Export the Express API
