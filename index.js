@@ -47,11 +47,13 @@ app.post('/contact', (req, res) => {
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
         console.log(error);
+            //send response
+            res.send('error');
         } else {
+            //send reponse 
+            res.send('success');
         }
     });
-
-    res.send('done');
 })
 
 
