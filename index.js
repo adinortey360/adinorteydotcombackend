@@ -1,7 +1,10 @@
 const express = require('express')
 var nodemailer = require('nodemailer');
+var bodyParser = require('body-parser');
 const app = express()
 const port = 3000
+
+app.use(express.urlencoded());
 
 //Environment variables for smtp mail credentials
 const user = process.env.SMTP_USER;
